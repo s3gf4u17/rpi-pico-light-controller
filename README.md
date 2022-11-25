@@ -1,3 +1,13 @@
+## todo
+
+input to configure ip of the host machine
+remove get / feature from fastapi server
+
+## deployment
+
+nginx web server with template.html and script.js
+uvicorn --host 0.0.0.0 --port 8000
+
 ## how to build
 
     mkdir build
