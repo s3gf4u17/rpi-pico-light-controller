@@ -4,14 +4,15 @@
         <title>console</title>
     </head>
     <body>
-        <h1>WebSocket Console</h1>
+        <h1>WebSocket nano console</h1>
         <form action="" onsubmit="sendMessage(event)">
+            <input type="text" id="messageText" autocomplete="off"/>
             <button>Send</button>
         </form>
         <ul id='messages'>
         </ul>
         <script>
-            var ws = new WebSocket("ws://http://localhost:8000/ws");
+            var ws = new WebSocket("ws://localhost:8000/ws");
             ws.onmessage = function(event) {
                 var messages = document.getElementById('messages')
                 var message = document.createElement('li')
@@ -20,7 +21,9 @@
                 messages.appendChild(message)
             };
             function sendMessage(event) {
-                fetch('http://localhost:8000/send/0123456789012345',{mode:"cors"}).then((response) => response.json()).then((data) => console.log(data));
+                var input = document.getElementById("messageText")
+                ws.send(input.value)
+                input.value = ''
                 event.preventDefault()
             }
         </script>
