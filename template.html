@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chat</title>
+    </head>
+    <body>
+        <h1>WebSocket Console</h1>
+        <form action="" onsubmit="sendMessage(event)">
+            <button>Send</button>
+        </form>
+        <ul id='messages'>
+        </ul>
+        <script>
+            var ws = new WebSocket("http://localhost:8000/ws");
+            ws.onmessage = function(event) {
+                var messages = document.getElementById('messages')
+                var message = document.createElement('li')
+                var content = document.createTextNode(event.data)
+                message.appendChild(content)
+                messages.appendChild(message)
+            };
+            function sendMessage(event) {
+                fetch('http://localhost:8000/send/0123456789012345',{mode:"cors"}).then((response) => response.json()).then((data) => console.log(data));
+                event.preventDefault()
+            }
+        </script>
+    </body>
+</html>
