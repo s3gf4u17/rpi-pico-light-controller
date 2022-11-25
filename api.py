@@ -38,5 +38,9 @@ async def sendMessage(message):
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     while True:
-        content=ser.readline()
-        await websocket.send_text(content)
+        try:
+            content=ser.readline()
+            await websocket.send_text(content)
+        except Exception as e:
+            print(e)
+            break
