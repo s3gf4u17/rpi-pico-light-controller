@@ -1,20 +1,20 @@
 if (TARGET tinyusb_device)
-    add_executable(blink
-            blink.c
+    add_executable(controller
+    controller.c
             )
 
     # pull in common dependencies
-    target_link_libraries(blink pico_stdlib)
+    target_link_libraries(controller pico_stdlib)
 
     # enable usb output, disable uart output
-    pico_enable_stdio_usb(blink 1)
-    pico_enable_stdio_uart(blink 0)
+    pico_enable_stdio_usb(controller 1)
+    pico_enable_stdio_uart(controller 0)
 
     # create map/bin/hex/uf2 file etc.
-    pico_add_extra_outputs(blink)
+    pico_add_extra_outputs(controller)
 
     # add url via pico_set_program_url
-    example_auto_set_url(blink)
+    example_auto_set_url(controller)
 elseif(PICO_ON_DEVICE)
     message(WARNING "not building hello_usb because TinyUSB submodule is not initialized in the SDK")
 endif()

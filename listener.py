@@ -8,11 +8,14 @@ ser=serial.Serial('/dev/ttyACM0',timeout=2)
 #     content=ser.readline()
 #     print(content)
 
-string='0'
-while True:
-    if string == '1': string='0'
-    else: string='1'
-    print('sent',string)
-    ser.write(string.encode())
-    content=ser.readline()
-    print(content)
+string='1'
+# while True:
+#     if string == '1': string='0'
+#     else: string='1'
+#     print('sent',string)
+#     ser.write(string.encode())
+#     content=ser.readline()
+#     print(content)
+ser.write(string.encode())
+content=ser.readline()
+print(content)
