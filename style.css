@@ -1,0 +1,50 @@
+body{
+    background-color: #2d3843;
+    margin: 0;
+    padding: 0;
+}
+
+#content{
+    background-color: whitesmoke;
+    position: fixed;
+    top: 0;
+    left: 5%;
+    right: 5%;
+    bottom: 0;
+}
+
+#navbar{
+    width: 100%-100px;
+    height: 20px;
+    padding: 20px 30px;
+    border-bottom: 1px solid #2d3843;
+}
+
+#title{
+    float: left;
+}
+
+#logo{
+    float: right;
+}
+
+#logo img{
+    transform: translateY(-5px);
+}
+
+.std{
+    width: 50%;
+    float: left;
+    position: absolute;
+    top: 61px;
+    bottom: 0;
+}
+
+#stdout{
+    background-color: #1c2732;
+    color: white;
+    color: lightblue;
+    right: 0;
+    width: calc(50%-20px);
+    overflow-y: scroll;
+}
