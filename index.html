@@ -2,8 +2,46 @@
 <html>
 <head>
     <title>rplc client</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+        body{
+            font-family: 'Lato', sans-serif;
+        }
+        #project-name{
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
+        #connection-form{
+            position: fixed;
+            padding: 20px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        span{
+            color: royalblue;
+            cursor: help;
+        }
+        input{
+            margin: 0px 0px;
+            padding: 10px 5px;
+            font-size: 24px;
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid black;
+        }
+        input:focus{
+            border-bottom: 1px solid royalblue;
+            outline: none;
+        }
+    </style>
 </head>
 <body>
-    <input id="host" type="text">
+    <div id="project-name">rpi-pico-light-controller</div>
+    <div id="connection-form"">
+        Host IP <span title="Connect to the IP of the host in your local network">(?)</span><br>
+        <input id="host" type="text" placeholder="xxx.xxx.xxx.xxx">
+    </div>
 </body>
 </html>
