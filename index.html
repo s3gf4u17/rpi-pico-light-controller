@@ -36,12 +36,21 @@
             outline: none;
         }
     </style>
+    <script>
+        var ws;
+        function connectToHost(event){
+            ws = new WebSocket("ws://"+document.getElementById("host").value+"/ws");
+            event.preventDefault();
+        }
+    </script>
 </head>
 <body>
     <div id="project-name">rpi-pico-light-controller</div>
     <div id="connection-form"">
         Host IP <span title="Connect to the IP of the host in your local network">(?)</span><br>
-        <input id="host" type="text" placeholder="xxx.xxx.xxx.xxx">
+        <form action="" onsubmit="connectToHost(event)">
+            <input id="host" type="text" placeholder="xxx.xxx.xxx.xxx">
+        </form>
     </div>
 </body>
 </html>
