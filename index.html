@@ -40,6 +40,13 @@
         var ws;
         function connectToHost(event){
             ws = new WebSocket("ws://"+document.getElementById("host").value+"/ws");
+            ws.onerror = function(){console.log("connection error")}
+            ws.onopen = function(){
+                console.log('connected');
+                document.getElementById("connection-form").style.visibility="hidden";
+            };
+            ws.onmessage = function(msg){console.log(msg)};
+            
             event.preventDefault();
         }
     </script>
