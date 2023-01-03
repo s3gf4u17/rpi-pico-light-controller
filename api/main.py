@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-# import serial, subprocess
+import serial, subprocess
 
-# subprocess.run(["sudo","chmod","a+wr","/dev/ttyACM0"])
+subprocess.run(["sudo","chmod","a+wr","/dev/ttyACM0"])
 
-# ser = serial.Serial("/dev/ttyACM0",timeout=1)
+ser = serial.Serial("/dev/ttyACM0",timeout=1)
 
 app = FastAPI()
 
@@ -15,10 +15,7 @@ async def root():
 # test if all components work (leds and both cores)
 @app.get("/test")
 async def root():
-    try:
-        print("testing")
-    except:
-        return {"STATUS":"error"}
+    ser.write("0".encode())
     return {"STATUS":"ok"}
 
 # check stats on work time, alarms triggered etc.
