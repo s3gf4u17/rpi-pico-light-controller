@@ -1,31 +1,32 @@
 from fastapi import FastAPI
+import serial, subprocess
+
+subprocess.run(["sudo","chmod","a+wr","/dev/ttyACM0"])
+
+ser = serial.Serial("/dev/ttyACM0",timeout=1)
 
 app = FastAPI()
 
+# test if connection between backend and frontend works
 @app.get("/")
 async def root():
     return {"STATUS":"ok"}
 
-@app.get("/green/status")
-async def root():
-    return {"ligth":"on"}
+# test if all components work (leds and both cores)
+@app.get("/test")
 
-@app.get("/red/status")
-async def root():
-    return {"light":"off"}
+# check stats on work time, alarms triggered etc.
+@app.get("/stats")
 
-@app.get("/yellow/status")
-async def root():
-    return {"light":"on"}
+# turn security features on
+@app.post("/arm")#password
 
-@app.post("/green/{status}")
-async def root():
-    return {"REQUEST":"ok"}
+# turn security features off
+@app.post("/disarm")#password
 
-@app.post("/red/{status}")
-async def root():
-    return {"REQUEST":"ok"}
+# listen for triggers
+@app.websocket("/listen")
 
-@app.post("/yellow/{status}")
-async def root():
-    return {"REQUEST":"ok"}
+# green unarmed
+# yellow armed
+# red armed && detected movement
